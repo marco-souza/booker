@@ -1,0 +1,13 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: format
+      files: git ls-files -m
+      glob: "*.go"
+      run: go fmt {files}
+      stage_fixed: true
+
+    - name: govet
+      files: git ls-files -m
+      glob: "*.go"
+      run: go vet {files}
